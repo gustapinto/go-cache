@@ -10,14 +10,15 @@ type inMemoryStoreEntry struct {
 	value     any
 }
 
-// InMemoryStore A in memory key-value based cache store, implements [Store]
+// InMemoryStore A in memory key-value based cache store, implements [Store], this store
+// should not be considered thread-safe by its own
 type InMemoryStore struct {
 	cacheMap *sync.Map
 }
 
 var _ Store = (*InMemoryStore)(nil)
 
-// NewInMemoryStore Creates a new usabled [InMemoryStore]
+// NewInMemoryStore Creates a new usable [InMemoryStore]
 func NewInMemoryStore() *InMemoryStore {
 	return &InMemoryStore{
 		cacheMap: &sync.Map{},

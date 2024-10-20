@@ -11,6 +11,8 @@ var store cache.Store
 
 func main() {
 	store = cache.NewInMemoryStore()
+	// Or...
+	// store = cache.NewFileStore("/tmp")
 
 	store.Set("FooKey", "FooValue", time.Now().Add(5*time.Second))
 
